@@ -21,7 +21,10 @@
     <!-- Skills -->
 
     <label>Skills:</label>
-    <input type="text" required v-model="tempSkills" @keydown="addSkill"/>
+    <input type="text" required v-model="tempSkill" @keyup="addSkill"/>
+    <div v-for="skill in skills" :key="skill" class="pill">
+      {{ skill }}
+    </div>
 
     <!-- Accept Terms and Conditions -->
 
@@ -39,7 +42,6 @@
   <p>Password: {{ password }}</p>
   <p>Role: {{ role }}</p>
   <p>Terms accepted: {{ terms }}</p>
-  <p v-for="skill in skills">Skills: {{ skill }}</p>
 </template>
 
 <script>
@@ -50,7 +52,7 @@
         password: '',
         role: '',
         terms: false,
-        tempSkills: '',
+        tempSkill: '',
         skills: [],
         }
       },
@@ -58,18 +60,25 @@
     methods: {
       addSkill(e) {
 
-        if (e.key === ',' && this.tempSkills !== '') {
-          console.log(e.target.value);
-          
-          this.skills.push(this.tempSkills);
+        if (e.key === ',' && this.tempSkill !== '') {
+          if(this.skills.includes(this.tempSkill.substring(0, this.tempSkill.length - 1))) {
 
-          this.tempSkills = '';
+            alert("You've already added this!");
+
+            this.tempSkill = '';
+          
+          } else {
+            this.skills.push(this.tempSkill.substring(0, this.tempSkill.length - 1));
+
+            this.tempSkill = '';
+          }
+
 
         }
 
-        // this.skills.push(this.tempSkills);
+        // this.skills.push(this.tempSkill);
 
-        // this.tempSkills = '';
+        // this.tempSkill = '';
       },
 
       submitFormHandler() {
