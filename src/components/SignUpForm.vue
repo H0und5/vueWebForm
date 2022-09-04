@@ -21,7 +21,7 @@
     <!-- Skills -->
 
     <label>Skills:</label>
-    <input type="text" required v-model="tempSkill" @keyup="addSkill"/>
+    <input type="text" required v-model="tempSkill" @keyup="addSkill" placeholder="Add each skill with a comma at the end"/>
     <div v-for="skill in skills" :key="skill" class="pill">
       {{ skill }}
     </div>
@@ -122,5 +122,17 @@
     margin: 0 10px 0 0;
     position: relative;
     top: 2px;
+  }
+  .pill {
+    display: inline-block;
+    margin: 20px 10px 0 0; 
+    padding: 6px 12px; 
+    background: #eee;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    letter-spacing: 1px;
+    font-weight: bold;
+    color: #777;
+    cursor: pointer;
   }
 </style>
