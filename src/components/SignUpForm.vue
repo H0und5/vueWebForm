@@ -22,7 +22,7 @@
 
     <label>Skills:</label>
     <input type="text" required v-model="tempSkill" @keyup="addSkill" placeholder="Add each skill with a comma at the end"/>
-    <div v-for="skill in skills" :key="skill" class="pill">
+    <div v-for="skill in skills" :key="skill" class="pill" @click="deleteSkill">
       {{ skill }}
     </div>
 
@@ -59,19 +59,24 @@
 
     methods: {
       addSkill(e) {
-
         if (e.key === ',' && this.tempSkill !== '') {
           if(!this.skills.includes(this.tempSkill.substring(0, this.tempSkill.length - 1))) {
             this.skills.push(this.tempSkill.substring(0, this.tempSkill.length - 1));
           } 
-          
           this.tempSkill = '';
-
         }
+      },
 
-        // this.skills.push(this.tempSkill);
+      deleteSkill(e) {
 
-        // this.tempSkill = '';
+        let skillToDelete = e.target.textContent;
+
+        console.log(skillToDelete);
+
+        this.skills = this.skills.filter(item => item != skillToDelete);
+
+        console.log(this.skills)
+        
       },
 
       submitFormHandler() {
