@@ -12,7 +12,7 @@
     <!-- Select Role -->
     
     <label>Role:</label>
-    <select v-model="role">
+    <select v-model="role" required>
       <option value="" disabled hidden selected>Choose Role</option>
       <option value="Developer">Web Developer</option>
       <option value="Designer">Web Designer</option>
@@ -40,10 +40,13 @@
     </div>
   </form>
 
-  <!-- <p>Email: {{ email }}</p>
+  <p>Email: {{ email }}</p>
   <p>Password: {{ password }}</p>
   <p>Role: {{ role }}</p>
-  <p>Terms accepted: {{ terms }}</p> -->
+  <p>Terms accepted: {{ terms }}</p>
+  <div v-for="skill in skills" class="skills">
+    <p>{{ skill }}</p>
+  </div>
 </template>
 
 <script>
@@ -56,6 +59,7 @@
         terms: false,
         tempSkill: '',
         skills: [],
+
         }
       },
 
@@ -87,8 +91,10 @@
             'Email: ', this.email, '\n',
             'Password: ', this.password, '\n',
             'Role: ', this.role, '\n',
+            'Skills: ', this.skills.map(item => item), '\n',
           )
         } else {
+            alert('Please complete the form :D!');
             console.log('Accept Terms and Conditions')
         }
       },
@@ -155,5 +161,8 @@
     box-sizing: border-box;
     border: 2px solid rgb(34, 128, 244);
     cursor: pointer;
+  }
+  .skills {
+    display: inline-block;
   }
 </style>
