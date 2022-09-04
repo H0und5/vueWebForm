@@ -18,23 +18,10 @@
       <option value="Designer">Web Designer</option>
     </select>
 
-    <!-- Names -->
+    <!-- Skills -->
 
-    <div>
-      <input type="checkbox" value="Tiffany" v-model="names"/>
-      <label>Tiffany</label>
-    </div>
-
-    <div>
-      <input type="checkbox" value="CommonProjects" v-model="names"/>
-      <label>Common Projects</label>
-    </div>
-
-
-    <div>
-      <input type="checkbox" value="Balenciaga" v-model="names"/>
-      <label>Balenciaga</label>
-    </div>
+    <label>Skills:</label>
+    <input type="text" required v-model="tempSkills" @keydown="addSkill"/>
 
     <!-- Accept Terms and Conditions -->
 
@@ -43,7 +30,7 @@
       <label>Accept Terms and Conditions</label>
     </div>
 
-    <!-- Submit Button Handler -->
+    <!-- Form Submit Button -->
 
     <button type="submit" @click.prevent="submitFormHandler">Submit Form</button>
   </form>
@@ -52,6 +39,7 @@
   <p>Password: {{ password }}</p>
   <p>Role: {{ role }}</p>
   <p>Terms accepted: {{ terms }}</p>
+  <p v-for="skill in skills">Skills: {{ skill }}</p>
 </template>
 
 <script>
@@ -62,22 +50,40 @@
         password: '',
         role: '',
         terms: false,
-        names: [],
-
-        submitFormHandler() {
-
-          if (this.terms === true) {
-            console.log(
-              'Email: ', this.email, '\n',
-              'Password: ', this.password, '\n',
-              'Role: ', this.role, '\n',
-            )
-          } else {
-            console.log('Accept Terms and Conditions')
-          }
-        },
+        tempSkills: '',
+        skills: [],
         }
-      }
+      },
+
+    methods: {
+      addSkill(e) {
+
+        if (e.key === ',' && this.tempSkills !== '') {
+          console.log(e.target.value);
+          
+          this.skills.push(this.tempSkills);
+
+          this.tempSkills = '';
+
+        }
+
+        // this.skills.push(this.tempSkills);
+
+        // this.tempSkills = '';
+      },
+
+      submitFormHandler() {
+        if (this.terms === true) {
+          console.log(
+            'Email: ', this.email, '\n',
+            'Password: ', this.password, '\n',
+            'Role: ', this.role, '\n',
+          )
+        } else {
+            console.log('Accept Terms and Conditions')
+        }
+      },
+    }
     }
 </script>
 
