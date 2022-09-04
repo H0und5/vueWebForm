@@ -94,11 +94,24 @@
             'Skills: ', this.skills.map(item => item), '\n',
           )
 
+          let userData = {
+            email: this.email, 
+            password: this.password,
+            role: this.role,
+            skills: this.skills,
+          }
+
+          console.log(userData);
+
+          fetch('https://vueform-5b842-default-rtdb.firebaseio.com/users.json', {
+            method: 'POST',
+            body: JSON.stringify(userData)
+          });
+
           this.email = '';
           this.password = '';
           this.role = '';
           this.skills = [];
-          
 
         } else {
             alert('Please complete the form :D!');
