@@ -93,6 +93,13 @@
             'Role: ', this.role, '\n',
             'Skills: ', this.skills.map(item => item), '\n',
           )
+
+          this.email = '';
+          this.password = '';
+          this.role = '';
+          this.skills = [];
+          
+
         } else {
             alert('Please complete the form :D!');
             console.log('Accept Terms and Conditions')
