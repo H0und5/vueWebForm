@@ -35,13 +35,15 @@
 
     <!-- Form Submit Button -->
 
-    <button type="submit" @click.prevent="submitFormHandler">Submit Form</button>
+    <div class="submit">
+      <button type="submit" @click.prevent="submitFormHandler">Submit Form</button>
+    </div>
   </form>
 
-  <p>Email: {{ email }}</p>
+  <!-- <p>Email: {{ email }}</p>
   <p>Password: {{ password }}</p>
   <p>Role: {{ role }}</p>
-  <p>Terms accepted: {{ terms }}</p>
+  <p>Terms accepted: {{ terms }}</p> -->
 </template>
 
 <script>
@@ -138,6 +140,20 @@
     letter-spacing: 1px;
     font-weight: bold;
     color: #777;
+    cursor: pointer;
+  }
+  .submit {
+    display: flex;
+    justify-content: center;
+    margin: 10px;
+  }
+  .submit button {
+    background: rgb(34, 128, 244);
+    padding: 6px 12px;
+    border-radius: 20px;
+    color: #fff;
+    box-sizing: border-box;
+    border: 2px solid rgb(34, 128, 244);
     cursor: pointer;
   }
 </style>

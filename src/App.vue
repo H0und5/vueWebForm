@@ -1,4 +1,7 @@
 <template>
+
+  <h2>Join the Job Profiler Community</h2>
+
   <SignUpForm />
 </template>
 
