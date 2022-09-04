@@ -61,18 +61,11 @@
       addSkill(e) {
 
         if (e.key === ',' && this.tempSkill !== '') {
-          if(this.skills.includes(this.tempSkill.substring(0, this.tempSkill.length - 1))) {
-
-            alert("You've already added this!");
-
-            this.tempSkill = '';
-          
-          } else {
+          if(!this.skills.includes(this.tempSkill.substring(0, this.tempSkill.length - 1))) {
             this.skills.push(this.tempSkill.substring(0, this.tempSkill.length - 1));
-
-            this.tempSkill = '';
-          }
-
+          } 
+          
+          this.tempSkill = '';
 
         }
 
