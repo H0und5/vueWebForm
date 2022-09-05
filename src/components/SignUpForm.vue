@@ -96,7 +96,6 @@
           }
 
           try {
-            
             const response = await fetch('https://vueform-5b842-default-rtdb.firebaseio.com/users.json', {
               method: 'POST',
               body: JSON.stringify(userData)
