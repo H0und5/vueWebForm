@@ -87,12 +87,6 @@
 
       submitFormHandler() {
         if (this.terms === true) {
-          console.log(
-            'Email: ', this.email, '\n',
-            'Password: ', this.password, '\n',
-            'Role: ', this.role, '\n',
-            'Skills: ', this.skills.map(item => item), '\n',
-          )
 
           let userData = {
             email: this.email, 
