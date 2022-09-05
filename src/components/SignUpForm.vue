@@ -85,7 +85,7 @@
         
       },
 
-      submitFormHandler() {
+      async submitFormHandler() {
         if (this.terms === true) {
 
           let userData = {
@@ -95,12 +95,20 @@
             skills: this.skills,
           }
 
-          console.log(userData);
+          try {
+            
+            const response = await fetch('https://vueform-5b842-default-rtdb.firebaseio.com/users.json', {
+              method: 'POST',
+              body: JSON.stringify(userData)
+            });
 
-          fetch('https://vueform-5b842-default-rtdb.firebaseio.com/users.json', {
-            method: 'POST',
-            body: JSON.stringify(userData)
-          });
+            console.log('Response Status: ', response.status);
+            console.log(response);
+
+          } catch (err) {
+            console.log(err);
+          }
+        
 
           this.email = '';
           this.password = '';
